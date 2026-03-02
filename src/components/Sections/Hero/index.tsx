@@ -22,13 +22,12 @@ export const Hero = () => {
 
         <div className="flex relative w-full flex-col items-center justify-between gap-[clamp(0.5rem,3vw,1rem)] lg:flex-row">
           <div className="max-w-[45ch] font-semibold text-[clamp(1.125rem,2vw+0.25rem,1.25rem)]">
-            {
-              "Not just a board, your board. Design a board that's as real as the places you take it."
-            }
+            Not just a board, your board. Design a board {"that's"} as real as
+            the places you take it.
           </div>
 
           <ButtonLink
-            href="#"
+            href="/build"
             icon="skateboard"
             size="lg"
             className="z-20 mt-2 block"

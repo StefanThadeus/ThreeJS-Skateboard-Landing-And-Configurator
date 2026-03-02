@@ -12,7 +12,9 @@ import {
   WHEEL_TEXTURES,
   DeckTextureKey,
   WheelTextureKey,
+  ColorKey,
   PATHS,
+  COLORS,
 } from "./constants";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
@@ -20,8 +22,8 @@ import gsap from "gsap";
 type SkateboardModelProps = {
   deckVariant?: DeckTextureKey;
   wheelVariant?: WheelTextureKey;
-  truckColor?: string;
-  boltColor?: string;
+  truckColor?: ColorKey;
+  boltColor?: ColorKey;
   constantWheelSpin?: boolean;
 };
 
@@ -43,8 +45,8 @@ type GLTFResult = GLTF & {
 export function SkateboardModel({
   deckVariant = "clean",
   wheelVariant = "cream",
-  truckColor = "#555555",
-  boltColor = "#555555",
+  truckColor = "silver",
+  boltColor = "silver",
   constantWheelSpin = false,
 }: SkateboardModelProps) {
   const wheelRefs = useRef<THREE.Object3D[]>([]);
@@ -81,7 +83,7 @@ export function SkateboardModel({
 
   const boltMaterial = useMemo(() => {
     return new THREE.MeshStandardMaterial({
-      color: boltColor,
+      color: COLORS[boltColor],
       metalness: 0.5,
       roughness: 0.3,
     });
@@ -98,7 +100,7 @@ export function SkateboardModel({
 
   const truckMaterial = useMemo(() => {
     return new THREE.MeshStandardMaterial({
-      color: truckColor,
+      color: COLORS[truckColor],
       normalMap: metalNormal,
       normalScale: new THREE.Vector2(0.3, 0.3),
       metalness: 0.8,

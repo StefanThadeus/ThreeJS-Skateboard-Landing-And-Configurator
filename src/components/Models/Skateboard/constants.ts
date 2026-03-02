@@ -23,6 +23,21 @@ export const DECK_TEXTURES = {
 
 export type DeckTextureKey = keyof typeof DECK_TEXTURES;
 
+export const DECK_NAMES: Record<keyof typeof DECK_TEXTURES, string> = {
+  clean: "Clean",
+  againstTheTide: "Against the Tide",
+  blackAndYellow: "Black and Yellow",
+  grayAndBlack: "Gray and Black",
+  greenAndNavy: "Green and Navy",
+  gridStreaks: "Grid Streaks",
+  oniMask: "Oni Mask",
+  pinkSwirl: "Pink Swirl",
+  redAndBlack: "Red and Black",
+  redAndWhite: "Red and White",
+  thankYou: "Thank You",
+  yellowAndBlack: "Yellow and Black",
+} as const;
+
 export const WHEEL_TEXTURES = {
   cream: `${PATHS.wheel}/cream.png`,
   black: `${PATHS.wheel}/black.png`,
@@ -36,3 +51,20 @@ export const WHEEL_TEXTURES = {
 } as const;
 
 export type WheelTextureKey = keyof typeof WHEEL_TEXTURES;
+
+export const COLORS = {
+  black: "#303030",
+  steel: "#5A6C7D",
+  asphalt: "#394D62",
+  gold: "#D4AF37",
+  silver: "#C0C0C0",
+  red: "#E63946",
+  blue: "#2563EB",
+  lime: "#84CC16",
+  yellow: "#FACC15",
+  purple: "#7C3AED",
+  raspberry: "#D7265E",
+  pink: "#EC4899",
+} as const;
+
+export type ColorKey = keyof typeof COLORS;

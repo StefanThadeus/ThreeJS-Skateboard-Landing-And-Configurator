@@ -180,8 +180,8 @@ const Scene = () => {
             <SkateboardModel
               deckVariant="greenAndNavy"
               wheelVariant="green"
-              boltColor="#394D62"
-              truckColor="#394D62"
+              boltColor="asphalt"
+              truckColor="asphalt"
               constantWheelSpin
             />
 

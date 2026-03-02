@@ -51,6 +51,11 @@
   }
 }
 
+html,
+body {
+  height: 100%;
+}
+
 .bg-texture {
   background-image: url("/bg-texture.webp");
   background-size: 720px 460px;
