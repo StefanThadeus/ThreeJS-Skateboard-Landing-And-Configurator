@@ -25,6 +25,7 @@ type SkateboardModelProps = {
   truckColor?: ColorKey;
   boltColor?: ColorKey;
   constantWheelSpin?: boolean;
+  preloadVariants?: boolean;
 };
 
 type GLTFResult = GLTF & {
@@ -48,6 +49,7 @@ export function SkateboardModel({
   truckColor = "silver",
   boltColor = "silver",
   constantWheelSpin = false,
+  preloadVariants = false,
 }: SkateboardModelProps) {
   const wheelRefs = useRef<THREE.Object3D[]>([]);
 
@@ -108,10 +110,21 @@ export function SkateboardModel({
     });
   }, [truckColor, metalNormal]);
 
-  const deckTexture = useTexture(DECK_TEXTURES[deckVariant], (texture) => {
-    texture.flipY = false;
-    texture.colorSpace = THREE.SRGBColorSpace;
-  });
+  const deckTextureArray = useTexture(
+    preloadVariants
+      ? Object.values(DECK_TEXTURES)
+      : [DECK_TEXTURES[deckVariant]],
+    (textures) => {
+      textures.forEach((texture) => {
+        texture.flipY = false;
+        texture.colorSpace = THREE.SRGBColorSpace;
+      });
+    },
+  );
+
+  const deckTexture = preloadVariants
+    ? deckTextureArray[Object.keys(DECK_TEXTURES).indexOf(deckVariant)]
+    : deckTextureArray[0];
 
   const deckMaterial = useMemo(() => {
     return new THREE.MeshStandardMaterial({
@@ -120,10 +133,21 @@ export function SkateboardModel({
     });
   }, [deckTexture]);
 
-  const wheelTexture = useTexture(WHEEL_TEXTURES[wheelVariant], (texture) => {
-    texture.flipY = false;
-    texture.colorSpace = THREE.SRGBColorSpace;
-  });
+  const wheelTextureArray = useTexture(
+    preloadVariants
+      ? Object.values(WHEEL_TEXTURES)
+      : [WHEEL_TEXTURES[wheelVariant]],
+    (textures) => {
+      textures.forEach((texture) => {
+        texture.flipY = false;
+        texture.colorSpace = THREE.SRGBColorSpace;
+      });
+    },
+  );
+
+  const wheelTexture = preloadVariants
+    ? wheelTextureArray[Object.keys(WHEEL_TEXTURES).indexOf(wheelVariant)]
+    : wheelTextureArray[0];
 
   const wheelMaterial = useMemo(() => {
     return new THREE.MeshStandardMaterial({

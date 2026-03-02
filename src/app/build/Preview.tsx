@@ -95,6 +95,7 @@ export default function Preview() {
             wheelVariant={selectedWheel}
             truckColor={selectedTruck}
             boltColor={selectedBolt}
+            preloadVariants
           />
         </group>
 
