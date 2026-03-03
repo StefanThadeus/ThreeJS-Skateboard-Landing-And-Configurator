@@ -23,7 +23,7 @@ export const DECK_TEXTURES = {
 
 export type DeckTextureKey = keyof typeof DECK_TEXTURES;
 
-export const DECK_NAMES: Record<keyof typeof DECK_TEXTURES, string> = {
+export const DECK_NAMES: Record<DeckTextureKey, string> = {
   clean: "Clean",
   againstTheTide: "Against the Tide",
   blackAndYellow: "Black and Yellow",

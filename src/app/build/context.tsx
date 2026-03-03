@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, ReactNode, useContext, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import {
   ColorKey,
   DeckTextureKey,
@@ -37,20 +36,10 @@ export function CustomizerControlsProvider({
   defaultBolt,
   children,
 }: CustomizerControlsProviderProps) {
-  const searchParams = useSearchParams();
-
-  const [selectedWheel, setWheel] = useState<WheelTextureKey>(
-    (searchParams.get("wheel") as WheelTextureKey) ?? defaultWheel,
-  );
-  const [selectedDeck, setDeck] = useState<DeckTextureKey>(
-    (searchParams.get("deck") as DeckTextureKey) ?? defaultDeck,
-  );
-  const [selectedTruck, setTruck] = useState<ColorKey>(
-    (searchParams.get("truck") as ColorKey) ?? defaultTruck,
-  );
-  const [selectedBolt, setBolt] = useState<ColorKey>(
-    (searchParams.get("bolt") as ColorKey) ?? defaultBolt,
-  );
+  const [selectedWheel, setWheel] = useState<WheelTextureKey>(defaultWheel);
+  const [selectedDeck, setDeck] = useState<DeckTextureKey>(defaultDeck);
+  const [selectedTruck, setTruck] = useState<ColorKey>(defaultTruck);
+  const [selectedBolt, setBolt] = useState<ColorKey>(defaultBolt);
 
   const value = {
     selectedWheel,

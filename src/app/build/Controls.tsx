@@ -7,10 +7,13 @@ import { useCustomizerControls } from "./context";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import {
+  ColorKey,
   COLORS,
   DECK_NAMES,
   DECK_TEXTURES,
+  DeckTextureKey,
   WHEEL_TEXTURES,
+  WheelTextureKey,
 } from "@/components/Models/Skateboard/constants";
 
 type Props = {
@@ -66,9 +69,15 @@ export default function Controls({ className }: Props) {
           <CircleOption
             key={deck.id}
             selected={deck.id === selectedDeck}
-            onClick={() => setDeck(deck.id as keyof typeof DECK_TEXTURES)}
+            onClick={() => setDeck(deck.id as DeckTextureKey)}
           >
-            <Image src={deck.src} alt={deck.id} fill className="object-cover" />
+            <Image
+              src={deck.src}
+              alt={deck.id}
+              fill
+              sizes="(max-width: 640px) 40px, 80px"
+              className="object-cover"
+            />
           </CircleOption>
         ))}
       </Options>
@@ -78,12 +87,13 @@ export default function Controls({ className }: Props) {
           <CircleOption
             key={wheel.id}
             selected={wheel.id === selectedWheel}
-            onClick={() => setWheel(wheel.id as keyof typeof WHEEL_TEXTURES)}
+            onClick={() => setWheel(wheel.id as WheelTextureKey)}
           >
             <Image
               src={wheel.src}
               alt={wheel.id}
               fill
+              sizes="(max-width: 640px) 40px, 80px"
               className="object-cover"
             />
           </CircleOption>
@@ -95,7 +105,7 @@ export default function Controls({ className }: Props) {
           <CircleOption
             key={color.id}
             selected={color.id === selectedTruck}
-            onClick={() => setTruck(color.id as keyof typeof COLORS)}
+            onClick={() => setTruck(color.id as ColorKey)}
             color={color.src}
           />
         ))}
@@ -106,7 +116,7 @@ export default function Controls({ className }: Props) {
           <CircleOption
             key={color.id}
             selected={color.id === selectedBolt}
-            onClick={() => setBolt(color.id as keyof typeof COLORS)}
+            onClick={() => setBolt(color.id as ColorKey)}
             color={color.src}
           />
         ))}
