@@ -56,6 +56,10 @@ body {
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .bg-texture {
   background-image: url("/bg-texture.webp");
   background-size: 720px 460px;

@@ -7,7 +7,10 @@ import { SKATERS } from "./constants";
 
 export const TeamGrid = async () => {
   return (
-    <Bounded className="bg-texture bg-brand-navy relative z-10">
+    <Bounded
+      id="team"
+      className="bg-texture bg-brand-navy relative z-10 scroll-mt-32"
+    >
       <SlideIn>
         <Heading as="h2" size="lg" className="mb-8 text-center text-white">
           The Team

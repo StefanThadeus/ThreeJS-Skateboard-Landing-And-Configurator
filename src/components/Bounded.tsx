@@ -1,11 +1,9 @@
-import { CSSProperties, ReactNode } from "react";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 import clsx from "clsx";
 
 type BoundedProps = {
-  className?: string;
-  style?: CSSProperties;
   children: ReactNode;
-};
+} & ComponentPropsWithoutRef<"section">;
 
 export function Bounded({ className, children, ...restProps }: BoundedProps) {
   return (
