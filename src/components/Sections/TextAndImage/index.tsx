@@ -3,5 +3,10 @@ import { TextAndImageSection } from "./TextAndImageSection";
 
 export const TextAndImageSections = () =>
   TEXT_AND_IMAGE_DATA.map((section, index) => (
-    <TextAndImageSection key={section.theme} data={section} index={index} />
+    <TextAndImageSection
+      key={section.theme}
+      data={section}
+      index={index}
+      isLast={index === TEXT_AND_IMAGE_DATA.length - 1}
+    />
   ));

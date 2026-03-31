@@ -19,9 +19,14 @@ export type TextAndImageData = {
 type TextAndImageSectionProps = {
   data: TextAndImageData;
   index: number;
+  isLast?: boolean;
 };
 
-export function TextAndImageSection({ data, index }: TextAndImageSectionProps) {
+export function TextAndImageSection({
+  data,
+  index,
+  isLast = false,
+}: TextAndImageSectionProps) {
   const {
     theme,
     title,
@@ -36,13 +41,17 @@ export function TextAndImageSection({ data, index }: TextAndImageSectionProps) {
   return (
     <Bounded
       className={clsx(
-        "sticky",
+        "relative",
+        !isLast && "sticky",
         theme === "LightBlue" && "bg-texture bg-brand-blue text-white",
         theme === "Red" && "bg-texture bg-brand-orange text-white",
         theme === "DarkBlue" && "bg-texture bg-brand-navy text-white",
         theme === "Yellow" && "bg-texture bg-brand-lime text-zinc-800",
       )}
-      style={{ top: `${index * 2}rem` }}
+      style={{
+        zIndex: index + 1,
+        ...(!isLast ? { top: `${index * 2}rem` } : {}),
+      }}
     >
       <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24">
         <div
